@@ -1,0 +1,21 @@
+#-*- coding:utf-8 -*-
+import tensorflow as tf
+import time
+
+t1 = time.time()
+x = tf.Variable([1.0])
+b = 1.0
+
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    start1 = time.time()
+
+    for i in range(100000):
+        res = sess.run(x)
+    print time.time()-start1
+
+    start2 = time.time()
+    for i in range(100000):
+        res = x
+    print time.time()-start2
+
